@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { title, description, userName, userEmail, categoryId } = body;
+    const { title, description, userName, userEmail, categoryId, userMobile, userCity, userState, userCountry } = body;
 
     const { data, error } = await supabase
       .from('saas_feature')
@@ -15,6 +15,10 @@ export async function POST(request: Request) {
           user_name: userName,
           user_email: userEmail,
           category: categoryId || 1,
+          user_mobile: userMobile,
+          user_city: userCity,
+          user_state: userState,
+          user_country: userCountry
         },
       ])
       .select('id')

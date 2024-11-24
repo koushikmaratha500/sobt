@@ -18,6 +18,10 @@ const formSchema = z.object({
   userName: z.string().min(2, "Name must be at least 2 characters"),
   userEmail: z.string().email("Invalid email address"),
   categoryId: z.number().min(1, "Please select a category"),
+  userMobile: z.string().min(2, "Mobile must be at least 9 numbers"),
+  userCity: z.string().min(2, "City must be at least 2 numbers"),
+  userState: z.string().min(2, "State must be at least 2 numbers"),
+  userCountry: z.string().min(2, "Country must be at least 2 numbers"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -169,6 +173,65 @@ export function FeatureRequestForm() {
             />
             {errors.userEmail && (
               <p className="text-xs text-red-500 sm:text-sm">{errors.userEmail.message}</p>
+            )}
+          </div>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-2">
+            <label htmlFor="userMobile" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              Mobile#
+            </label>
+            <input
+              {...register("userMobile")}
+              className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sm:h-10 sm:py-2"
+              placeholder="Your Mobile#"
+            />
+            {errors.userMobile && (
+              <p className="text-xs text-red-500 sm:text-sm">{errors.userMobile.message}</p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="userCity" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              City
+            </label>
+            <input
+              {...register("userCity")}
+              type="text"
+              className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sm:h-10 sm:py-2"
+              placeholder="Hyderabad"
+            />
+            {errors.userCity && (
+              <p className="text-xs text-red-500 sm:text-sm">{errors.userCity.message}</p>
+            )}
+          </div>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-2">
+            <label htmlFor="userState" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              State
+            </label>
+            <input
+              {...register("userState")}
+              className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sm:h-10 sm:py-2"
+              placeholder="Telangana"
+            />
+            {errors.userState && (
+              <p className="text-xs text-red-500 sm:text-sm">{errors.userState.message}</p>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="userCountry" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              Country
+            </label>
+            <input
+              {...register("userCountry")}
+              className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sm:h-10 sm:py-2"
+              placeholder="India"
+            />
+            {errors.userCountry && (
+              <p className="text-xs text-red-500 sm:text-sm">{errors.userCountry.message}</p>
             )}
           </div>
         </div>
